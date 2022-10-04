@@ -14,9 +14,27 @@ struct FirebaseAuthManager: AuthManager {
   func register(email: String, password: String) {
     Auth.auth().createUser(withEmail: email, password: password) { authData, error in
       if let e = error {
-        delegate?.authManagerDidRegisterFailWithError(e)
+        if delegate?.authManagerDidRegisterUser != nil {
+          delegate?.authManagerDidFailWithError!(e)
+        }
       } else {
-        delegate?.authManagerDidRegisterUser()
+        if delegate?.authManagerDidRegisterUser != nil {
+          delegate?.authManagerDidRegisterUser!()
+        }
+      }
+    }
+  }
+  
+  func login(email: String, password: String) {
+    Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+      if let e = error {
+        if delegate?.authManagerDidRegisterUser != nil {
+          delegate?.authManagerDidFailWithError!(e)
+        }
+      } else {
+        if delegate?.authManagerDidLogin != nil {
+          delegate?.authManagerDidLogin!()
+        }
       }
     }
   }

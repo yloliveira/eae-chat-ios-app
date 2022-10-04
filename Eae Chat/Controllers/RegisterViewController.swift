@@ -33,7 +33,7 @@ extension RegisterViewController: AuthManagerDelegate {
     performSegue(withIdentifier: "RegisterToChat", sender: self)
   }
   
-  func authManagerDidRegisterFailWithError(_ error: Error) {
+  func authManagerDidFailWithError(_ error: Error) {
     print(error.localizedDescription)
   }
 }

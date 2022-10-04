@@ -13,8 +13,29 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var emailTextfield: UITextField!
   @IBOutlet weak var passwordTextfield: UITextField!
   
+  var authManager = FirebaseAuthManager()
   
-  @IBAction func loginPressed(_ sender: UIButton) {
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    authManager.delegate = self
   }
   
+  
+  @IBAction func loginPressed(_ sender: UIButton) {
+    if let email = emailTextfield.text, let password = passwordTextfield.text {
+      authManager.login(email: email, password: password)
+    }
+  }
+}
+
+//MARK: - AuthManagerDelegate
+
+extension LoginViewController: AuthManagerDelegate {
+  func authManagerDidLogin() {
+    performSegue(withIdentifier: "LoginToChat", sender: self)
+  }
+  
+  func authManagerDidFailWithError(_ error: Error) {
+    print(error.localizedDescription)
+  }
 }
