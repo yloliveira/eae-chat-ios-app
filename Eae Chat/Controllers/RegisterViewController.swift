@@ -9,11 +9,31 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-
-    @IBOutlet weak var emailTextfield: UITextField!
-    @IBOutlet weak var passwordTextfield: UITextField!
-    
-    @IBAction func registerPressed(_ sender: UIButton) {
+  @IBOutlet weak var emailTextfield: UITextField!
+  @IBOutlet weak var passwordTextfield: UITextField!
+  
+  var authManager = FirebaseAuthManager()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    authManager.delegate = self
+  }
+  
+  @IBAction func registerPressed(_ sender: UIButton) {
+    if let email = emailTextfield.text, let password = passwordTextfield.text {
+      authManager.register(email: email, password: password)
     }
-    
+  }
+}
+
+//MARK: - AuthManagerDelegate
+
+extension RegisterViewController: AuthManagerDelegate {
+  func authManagerDidRegisterUser() {
+    performSegue(withIdentifier: "RegisterToChat", sender: self)
+  }
+  
+  func authManagerDidRegisterFailWithError(_ error: Error) {
+    print(error.localizedDescription)
+  }
 }
