@@ -38,4 +38,18 @@ struct FirebaseAuthManager: AuthManager {
       }
     }
   }
+  
+  func logout() {
+    do {
+      try Auth.auth().signOut()
+      if delegate?.authManagerDidLogout?() != nil {
+        delegate?.authManagerDidLogout!()
+      }
+    } catch let signOutError as NSError {
+      if delegate?.authManagerDidRegisterUser != nil {
+        delegate?.authManagerDidFailWithError!(signOutError)
+      }
+    }
+    
+  }
 }

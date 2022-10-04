@@ -12,10 +12,12 @@ protocol AuthManager {
   var delegate: AuthManagerDelegate? { get }
   func register(email: String, password: String) -> Void
   func login(email: String, password: String) -> Void
+  func logout() -> Void
 }
 
 @objc protocol AuthManagerDelegate {
   @objc optional func authManagerDidRegisterUser() -> Void
   @objc optional func authManagerDidLogin() -> Void
+  @objc optional func authManagerDidLogout() -> Void
   @objc optional func authManagerDidFailWithError(_ error: Error) -> Void
 }
