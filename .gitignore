@@ -2,3 +2,4 @@
 *.xcconfig
 Pods
 xcuserdata/
+GoogleService-info.plist
