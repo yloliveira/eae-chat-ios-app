@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: AuthManagerDelegate {
   func authManagerDidLogin() {
-    performSegue(withIdentifier: "LoginToChat", sender: self)
+    performSegue(withIdentifier: Constants.LOGIN_TO_CHAT_SEGUE, sender: self)
   }
   
   func authManagerDidFailWithError(_ error: Error) {

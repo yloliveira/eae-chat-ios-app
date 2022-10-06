@@ -30,7 +30,7 @@ class RegisterViewController: UIViewController {
 
 extension RegisterViewController: AuthManagerDelegate {
   func authManagerDidRegisterUser() {
-    performSegue(withIdentifier: "RegisterToChat", sender: self)
+    performSegue(withIdentifier: Constants.REGISTER_TO_CHAT_SEGUE, sender: self)
   }
   
   func authManagerDidFailWithError(_ error: Error) {

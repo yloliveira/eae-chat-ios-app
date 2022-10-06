@@ -18,7 +18,7 @@ class ChatViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     authManager.delegate = self
-    title = "💬 Eae"
+    title = Constants.APP_NAME
     navigationItem.hidesBackButton = true
   }
   

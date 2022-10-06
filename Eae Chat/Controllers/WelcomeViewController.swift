@@ -19,7 +19,7 @@ class WelcomeViewController: UIViewController {
   
   
   private func animateTitle() {
-    let title = "💬 Eae"
+    let title = Constants.APP_NAME
     titleLabel.text = ""
     var index = 0.0
     
