@@ -10,4 +10,5 @@ struct Constants {
   static let APP_NAME = "💬 Eae"
   static let REGISTER_TO_CHAT_SEGUE = "RegisterToChat"
   static let LOGIN_TO_CHAT_SEGUE = "LoginToChat"
+  static let CHAT_TABLE_VIEW_REUSABLE_CELL = "ChatTableViewReusableCell"
 }
