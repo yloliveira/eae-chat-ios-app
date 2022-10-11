@@ -14,6 +14,7 @@ class ChatViewController: UIViewController {
   @IBOutlet weak var messageTextfield: UITextField!
   
   var authManager = FirebaseAuthManager()
+  var chatManager = FirebaseChatManager()
   var messages: [ChatMessage] = [
     ChatMessage(sender: "1@2.com", body: "hey"),
     ChatMessage(sender: "1@3.com", body: "hello"),
@@ -25,6 +26,7 @@ class ChatViewController: UIViewController {
     
     tableView.dataSource = self
     authManager.delegate = self
+    chatManager.delegate = self
     title = Constants.APP_NAME
     navigationItem.hidesBackButton = true
     
@@ -36,6 +38,9 @@ class ChatViewController: UIViewController {
   }
   
   @IBAction func sendPressed(_ sender: UIButton) {
+    if let body = messageTextfield.text, let sender = authManager.getCurrentUserEmail() {
+      chatManager.sendMessage(message: ChatMessage(sender: sender, body: body))
+    }
   }
 }
 
@@ -47,6 +52,18 @@ extension ChatViewController: AuthManagerDelegate {
   }
   
   func authManagerDidFailWithError(_ error: Error) {
+    print(error.localizedDescription)
+  }
+}
+
+//MARK: - ChatManagerDelegate
+
+extension ChatViewController: ChatManagerDelegate {
+  func chatManagerDidSendMessage(message: ChatMessage) {
+    messageTextfield.text = ""
+  }
+  
+  func chatManagerDidFailWithError(_ error: Error) {
     print(error.localizedDescription)
   }
 }

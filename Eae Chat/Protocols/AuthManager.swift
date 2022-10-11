@@ -13,6 +13,7 @@ protocol AuthManager {
   func register(email: String, password: String) -> Void
   func login(email: String, password: String) -> Void
   func logout() -> Void
+  func getCurrentUserEmail() -> String?
 }
 
 @objc protocol AuthManagerDelegate {

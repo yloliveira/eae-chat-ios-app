@@ -12,4 +12,8 @@ struct Constants {
   static let LOGIN_TO_CHAT_SEGUE = "LoginToChat"
   static let CHAT_TABLE_VIEW_REUSABLE_CELL = "ChatTableViewReusableCell"
   static let CHAT_TABLE_VIEW_NIB_NAME = "ChatMessageCell"
+  
+  static let MESSAGES_COLLECTION_NAME = "messages"
+  static let MESSAGE_SENDER_FIELD_NAME = "sender"
+  static let MESSAGE_BODY_FIELD_NAME = "body"
 }

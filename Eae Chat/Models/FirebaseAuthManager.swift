@@ -52,4 +52,8 @@ struct FirebaseAuthManager: AuthManager {
     }
     
   }
+  
+  func getCurrentUserEmail() -> String? {
+    return Auth.auth().currentUser?.email
+  }
 }
