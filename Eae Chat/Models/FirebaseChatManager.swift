@@ -25,4 +25,24 @@ struct FirebaseChatManager: ChatManager {
       }
     }
   }
+  
+  func listMessages() -> Void {
+    var result: [ChatMessage] = []
+    let db = Firestore.firestore()
+    db.collection(Constants.MESSAGES_COLLECTION_NAME).getDocuments { querySnapshot, error in
+      if let e = error {
+        delegate?.chatManagerDidFailWithError(e)
+      } else {
+        for document in querySnapshot!.documents {
+          if let sender = document.get(Constants.MESSAGE_SENDER_FIELD_NAME) as? String,
+             let body = document.get(Constants.MESSAGE_BODY_FIELD_NAME) as? String
+          {
+            let message = ChatMessage(sender: sender, body: body  )
+            result.append(message)
+          }
+        }
+        delegate?.chatManagerDidListMessages(messages: result)
+      }
+    }
+  }
 }

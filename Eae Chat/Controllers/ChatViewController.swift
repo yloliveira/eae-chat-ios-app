@@ -15,11 +15,7 @@ class ChatViewController: UIViewController {
   
   var authManager = FirebaseAuthManager()
   var chatManager = FirebaseChatManager()
-  var messages: [ChatMessage] = [
-    ChatMessage(sender: "1@2.com", body: "hey"),
-    ChatMessage(sender: "1@3.com", body: "hello"),
-    ChatMessage(sender: "1@4.com", body: "Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Vehicula non. Ut sed ex eros. Vivamus sit amet nibh non tellus tristique interdum.Leite de capivaris, leite de mula manquis sem cabeça.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.")
-  ]
+  var messages: [ChatMessage] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,6 +25,8 @@ class ChatViewController: UIViewController {
     chatManager.delegate = self
     title = Constants.APP_NAME
     navigationItem.hidesBackButton = true
+    
+    chatManager.listMessages()
     
     tableView.register(UINib(nibName: Constants.CHAT_TABLE_VIEW_NIB_NAME, bundle: nil), forCellReuseIdentifier: Constants.CHAT_TABLE_VIEW_REUSABLE_CELL)
   }
@@ -61,6 +59,13 @@ extension ChatViewController: AuthManagerDelegate {
 extension ChatViewController: ChatManagerDelegate {
   func chatManagerDidSendMessage(message: ChatMessage) {
     messageTextfield.text = ""
+  }
+  
+  func chatManagerDidListMessages(messages: [ChatMessage]) {
+    DispatchQueue.main.async {
+      self.messages.append(contentsOf: messages)
+      self.tableView.reloadData()
+    }
   }
   
   func chatManagerDidFailWithError(_ error: Error) {
