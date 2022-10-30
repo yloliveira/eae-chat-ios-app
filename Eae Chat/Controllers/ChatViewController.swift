@@ -62,8 +62,8 @@ extension ChatViewController: ChatManagerDelegate {
   }
   
   func chatManagerDidListMessages(messages: [ChatMessage]) {
+    self.messages = messages
     DispatchQueue.main.async {
-      self.messages.append(contentsOf: messages)
       self.tableView.reloadData()
     }
   }

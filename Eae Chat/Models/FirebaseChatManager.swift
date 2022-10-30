@@ -27,12 +27,12 @@ struct FirebaseChatManager: ChatManager {
   }
   
   func listMessages() -> Void {
-    var result: [ChatMessage] = []
     let db = Firestore.firestore()
-    db.collection(Constants.MESSAGES_COLLECTION_NAME).getDocuments { querySnapshot, error in
+    db.collection(Constants.MESSAGES_COLLECTION_NAME).addSnapshotListener { querySnapshot, error in
       if let e = error {
         delegate?.chatManagerDidFailWithError(e)
       } else {
+        var result: [ChatMessage] = []
         for document in querySnapshot!.documents {
           if let sender = document.get(Constants.MESSAGE_SENDER_FIELD_NAME) as? String,
              let body = document.get(Constants.MESSAGE_BODY_FIELD_NAME) as? String
