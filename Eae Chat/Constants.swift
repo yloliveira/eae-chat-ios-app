@@ -16,4 +16,5 @@ struct Constants {
   static let MESSAGES_COLLECTION_NAME = "messages"
   static let MESSAGE_SENDER_FIELD_NAME = "sender"
   static let MESSAGE_BODY_FIELD_NAME = "body"
+  static let MESSAGE_DATE_FIELD_NAME = "date"
 }
