@@ -37,7 +37,7 @@ class ChatViewController: UIViewController {
   
   @IBAction func sendPressed(_ sender: UIButton) {
     if let body = messageTextfield.text, let sender = authManager.getCurrentUserEmail() {
-      chatManager.sendMessage(message: ChatMessage(sender: sender, body: body))
+      chatManager.sendMessage(message: ChatMessage(sender: sender, body: body, date: Date().timeIntervalSince1970))
     }
   }
 }
@@ -81,6 +81,8 @@ extension ChatViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd/MM/yyyy - HH:mm"
     let message = messages[indexPath.row]
     let loggedUserEmail = authManager.getCurrentUserEmail()
     let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CHAT_MESSAGE_REUSABLE_CELL, for: indexPath) as! ChatMessageCell
@@ -90,17 +92,16 @@ extension ChatViewController: UITableViewDataSource {
       cell.messageBubbleTrailingConstraint.constant = 10
       cell.messageBubbleLeadingConstraint.constant = 40
       cell.senderLabel.textAlignment = NSTextAlignment.right
-      cell.senderLabel.text = message.sender
-      cell.dateLabel.text = "03/11/2022 - 19:00"
+      
     } else {
       cell.messageBubble.backgroundColor = UIColor(named: "BrandLightPurple")
       cell.messageBubbleTrailingConstraint.constant = 40
       cell.messageBubbleLeadingConstraint.constant = 10
       cell.senderLabel.textAlignment = NSTextAlignment.left
-      cell.senderLabel.text = message.sender
-      cell.dateLabel.text = "03/11/2022 - 19:00"
     }
     
+    cell.senderLabel.text = message.sender
+    cell.dateLabel.text = dateFormatter.string(from: Date.init(timeIntervalSince1970: message.date))
     cell.messageLabel.text = message.body
     
     return cell

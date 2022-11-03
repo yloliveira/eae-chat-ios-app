@@ -17,7 +17,7 @@ struct FirebaseChatManager: ChatManager {
     db.collection(Constants.MESSAGES_COLLECTION_NAME).addDocument(data: [
       Constants.MESSAGE_SENDER_FIELD_NAME: message.sender,
       Constants.MESSAGE_BODY_FIELD_NAME: message.body,
-      Constants.MESSAGE_DATE_FIELD_NAME: Date().timeIntervalSince1970
+      Constants.MESSAGE_DATE_FIELD_NAME: message.date
     ]) { error in
       if let e = error {
         delegate?.chatManagerDidFailWithError(e)
@@ -39,9 +39,10 @@ struct FirebaseChatManager: ChatManager {
           var result: [ChatMessage] = []
           for document in querySnapshot!.documents {
             if let sender = document.get(Constants.MESSAGE_SENDER_FIELD_NAME) as? String,
-               let body = document.get(Constants.MESSAGE_BODY_FIELD_NAME) as? String
+               let body = document.get(Constants.MESSAGE_BODY_FIELD_NAME) as? String,
+               let date = document.get(Constants.MESSAGE_DATE_FIELD_NAME) as? Double
             {
-              let message = ChatMessage(sender: sender, body: body  )
+              let message = ChatMessage(sender: sender, body: body, date: date  )
               result.append(message)
             }
           }

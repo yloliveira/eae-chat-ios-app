@@ -9,4 +9,5 @@
 struct ChatMessage {
   let sender: String
   let body: String
+  let date: Double
 }
