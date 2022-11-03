@@ -6,5 +6,6 @@ target 'Eae Chat' do
   # Pods for Eae Chat
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'IQKeyboardManagerSwift'
 
 end
