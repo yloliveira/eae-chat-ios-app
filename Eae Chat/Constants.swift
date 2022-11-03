@@ -10,8 +10,8 @@ struct Constants {
   static let APP_NAME = "💬 Eae"
   static let REGISTER_TO_CHAT_SEGUE = "RegisterToChat"
   static let LOGIN_TO_CHAT_SEGUE = "LoginToChat"
-  static let CHAT_TABLE_VIEW_REUSABLE_CELL = "ChatTableViewReusableCell"
-  static let CHAT_TABLE_VIEW_NIB_NAME = "ChatMessageCell"
+  static let ME_CHAT_MESSAGE_REUSABLE = "MeChatMessageReusable"
+  static let ME_CHAT_MESSAGET_NIB_NAME = "MeChatMessageCell"
   
   static let MESSAGES_COLLECTION_NAME = "messages"
   static let MESSAGE_SENDER_FIELD_NAME = "sender"

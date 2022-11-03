@@ -18,8 +18,8 @@
 		0B62818F235DF01000E35CAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B62818E235DF01000E35CAF /* LoginViewController.swift */; };
 		0B628191235DF01B00E35CAF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B628190235DF01B00E35CAF /* ChatViewController.swift */; };
 		C43342BC28EF14D800A4F770 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43342BB28EF14D800A4F770 /* ChatMessage.swift */; };
-		C43342C328EF2D0A00A4F770 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43342C128EF2D0A00A4F770 /* ChatMessageCell.swift */; };
-		C43342C428EF2D0A00A4F770 /* ChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43342C228EF2D0A00A4F770 /* ChatMessageCell.xib */; };
+		C43342C328EF2D0A00A4F770 /* MeChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43342C128EF2D0A00A4F770 /* MeChatMessageCell.swift */; };
+		C43342C428EF2D0A00A4F770 /* MeChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43342C228EF2D0A00A4F770 /* MeChatMessageCell.xib */; };
 		C49A0AC028EC8DFA00F0525B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C49A0ABF28EC8DFA00F0525B /* GoogleService-Info.plist */; };
 		C49A0AC328EC9C7400F0525B /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49A0AC228EC9C7400F0525B /* FirebaseAuthManager.swift */; };
 		C49A0AC628ECA06800F0525B /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49A0AC528ECA06800F0525B /* AuthManager.swift */; };
@@ -44,8 +44,8 @@
 		9B2DF849AB8C215041B10E2F /* Pods_Eae_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eae_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF552893F919D7EF7AB672F8 /* Pods-Eae Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eae Chat.release.xcconfig"; path = "Target Support Files/Pods-Eae Chat/Pods-Eae Chat.release.xcconfig"; sourceTree = "<group>"; };
 		C43342BB28EF14D800A4F770 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
-		C43342C128EF2D0A00A4F770 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
-		C43342C228EF2D0A00A4F770 /* ChatMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatMessageCell.xib; sourceTree = "<group>"; };
+		C43342C128EF2D0A00A4F770 /* MeChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeChatMessageCell.swift; sourceTree = "<group>"; };
+		C43342C228EF2D0A00A4F770 /* MeChatMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeChatMessageCell.xib; sourceTree = "<group>"; };
 		C469935928E8BE7F00A95EE9 /* Config.dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.dev.xcconfig; sourceTree = "<group>"; };
 		C49A0ABF28EC8DFA00F0525B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C49A0AC228EC9C7400F0525B /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
@@ -119,8 +119,8 @@
 			children = (
 				0B628181235DEE8400E35CAF /* LaunchScreen.storyboard */,
 				0B62817C235DEE8100E35CAF /* Main.storyboard */,
-				C43342C128EF2D0A00A4F770 /* ChatMessageCell.swift */,
-				C43342C228EF2D0A00A4F770 /* ChatMessageCell.xib */,
+				C43342C128EF2D0A00A4F770 /* MeChatMessageCell.swift */,
+				C43342C228EF2D0A00A4F770 /* MeChatMessageCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,7 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C43342C428EF2D0A00A4F770 /* ChatMessageCell.xib in Resources */,
+				C43342C428EF2D0A00A4F770 /* MeChatMessageCell.xib in Resources */,
 				0B628183235DEE8400E35CAF /* LaunchScreen.storyboard in Resources */,
 				C49A0AC028EC8DFA00F0525B /* GoogleService-Info.plist in Resources */,
 				0B628180235DEE8400E35CAF /* Assets.xcassets in Resources */,
@@ -287,7 +287,7 @@
 				0B628177235DEE8100E35CAF /* AppDelegate.swift in Sources */,
 				0B628179235DEE8100E35CAF /* SceneDelegate.swift in Sources */,
 				0B62818F235DF01000E35CAF /* LoginViewController.swift in Sources */,
-				C43342C328EF2D0A00A4F770 /* ChatMessageCell.swift in Sources */,
+				C43342C328EF2D0A00A4F770 /* MeChatMessageCell.swift in Sources */,
 				0B628191235DF01B00E35CAF /* ChatViewController.swift in Sources */,
 				0B62818D235DF00B00E35CAF /* RegisterViewController.swift in Sources */,
 				C4E70B2628EF0099005EC50F /* Constants.swift in Sources */,

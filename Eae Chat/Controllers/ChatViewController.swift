@@ -28,7 +28,7 @@ class ChatViewController: UIViewController {
     
     chatManager.listMessages()
     
-    tableView.register(UINib(nibName: Constants.CHAT_TABLE_VIEW_NIB_NAME, bundle: nil), forCellReuseIdentifier: Constants.CHAT_TABLE_VIEW_REUSABLE_CELL)
+    tableView.register(UINib(nibName: Constants.ME_CHAT_MESSAGET_NIB_NAME, bundle: nil), forCellReuseIdentifier: Constants.ME_CHAT_MESSAGE_REUSABLE)
   }
   
   @IBAction func LogoutPressed(_ sender: UIBarButtonItem) {
@@ -81,7 +81,7 @@ extension ChatViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CHAT_TABLE_VIEW_REUSABLE_CELL, for: indexPath) as! ChatMessageCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: Constants.ME_CHAT_MESSAGE_REUSABLE, for: indexPath) as! MeChatMessageCell
     cell.messageLabel.text = messages[indexPath.row].body
     return cell
   }
