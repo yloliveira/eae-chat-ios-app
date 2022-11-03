@@ -8,9 +8,11 @@
 
 import UIKit
 
-class MeChatMessageCell: UITableViewCell {
+class ChatMessageCell: UITableViewCell {
   @IBOutlet weak var messageBubble: UIView!
   @IBOutlet weak var messageLabel: UILabel!
+  @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+  @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
   
   override func awakeFromNib() {
     super.awakeFromNib()

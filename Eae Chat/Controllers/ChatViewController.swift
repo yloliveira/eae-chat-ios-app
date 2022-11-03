@@ -28,7 +28,7 @@ class ChatViewController: UIViewController {
     
     chatManager.listMessages()
     
-    tableView.register(UINib(nibName: Constants.ME_CHAT_MESSAGET_NIB_NAME, bundle: nil), forCellReuseIdentifier: Constants.ME_CHAT_MESSAGE_REUSABLE)
+    tableView.register(UINib(nibName: Constants.CHAT_MESSAGE_NIB_NAME, bundle: nil), forCellReuseIdentifier: Constants.CHAT_MESSAGE_REUSABLE_CELL)
   }
   
   @IBAction func LogoutPressed(_ sender: UIBarButtonItem) {
@@ -81,8 +81,22 @@ extension ChatViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: Constants.ME_CHAT_MESSAGE_REUSABLE, for: indexPath) as! MeChatMessageCell
-    cell.messageLabel.text = messages[indexPath.row].body
+    let message = messages[indexPath.row]
+    let loggedUserEmail = authManager.getCurrentUserEmail()
+    let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CHAT_MESSAGE_REUSABLE_CELL, for: indexPath) as! ChatMessageCell
+    
+    if loggedUserEmail == message.sender {
+      cell.messageBubble.backgroundColor = UIColor(named: "BrandPurple")
+      cell.trailingConstraint.constant = 10
+      cell.leadingConstraint.constant = 40
+    } else {
+      cell.messageBubble.backgroundColor = UIColor(named: "BrandLightPurple")
+      cell.trailingConstraint.constant = 40
+      cell.leadingConstraint.constant = 10
+    }
+    
+    cell.messageLabel.text = message.body
+    
     return cell
   }
 }
