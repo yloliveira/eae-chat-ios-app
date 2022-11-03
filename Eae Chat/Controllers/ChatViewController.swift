@@ -87,12 +87,19 @@ extension ChatViewController: UITableViewDataSource {
     
     if loggedUserEmail == message.sender {
       cell.messageBubble.backgroundColor = UIColor(named: "BrandPurple")
-      cell.trailingConstraint.constant = 10
-      cell.leadingConstraint.constant = 40
+      cell.messageBubbleTrailingConstraint.constant = 0
+      cell.messageBubbleLeadingConstraint.constant = 30
+      cell.infoLabelTrailingConstraint.constant = 0
+      cell.infoLabelLeadingConstraint.constant = 30
+      cell.infoLabel.textAlignment = NSTextAlignment.right
+      cell.infoLabel.text = "03/11/2022 - 19:00"
     } else {
       cell.messageBubble.backgroundColor = UIColor(named: "BrandLightPurple")
-      cell.trailingConstraint.constant = 40
-      cell.leadingConstraint.constant = 10
+      cell.messageBubbleTrailingConstraint.constant = 30
+      cell.messageBubbleLeadingConstraint.constant = 0
+      cell.infoLabelTrailingConstraint.constant = 30
+      cell.infoLabelLeadingConstraint.constant = 0
+      cell.infoLabel.text = message.sender
     }
     
     cell.messageLabel.text = message.body
